@@ -72,7 +72,7 @@
       <h3 class="text-sm font-semibold text-slate-900">What We Do</h3>
       <p class="mt-1 text-xs text-slate-600 sm:text-sm">
         From sourcing and purification to distribution and community support, CWSI manages the full
-        lifecycle of safe water delivery.
+        lifecycle.
       </p>
 
       <!-- Icon-based summary cards (keep for quick scanning) -->
@@ -302,11 +302,6 @@ const gallery = [
     title: 'System Maintenance',
     description: 'Preventive and corrective work on pipelines and meters.',
     icon: WrenchScrewdriverIcon,
-  },
-  {
-    title: 'Water Delivery',
-    description: 'Logistics and distribution to reach every household.',
-    icon: TruckIcon,
   },
   {
     title: 'Safety & Compliance',
