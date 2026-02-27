@@ -1,104 +1,91 @@
 <template>
-  <section class="mx-auto max-w-6xl space-y-8 px-4 py-10 lg:px-0">
-    <header class="max-w-2xl space-y-3">
+  <section class="relative mx-auto max-w-6xl space-y-8 px-4 py-10 lg:px-0">
+    <div
+      class="pointer-events-none absolute inset-x-0 -top-32 -z-10 h-64 bg-gradient-to-b from-sky-500/30 via-sky-500/10 to-transparent"
+    ></div>
+    <div
+      class="pointer-events-none absolute -right-32 top-10 -z-10 h-40 w-40 rounded-full bg-sky-400/25 blur-3xl"
+    ></div>
+    <div
+      class="pointer-events-none absolute -left-24 bottom-0 -z-10 h-40 w-40 rounded-full bg-primary-500/15 blur-3xl"
+    ></div>
+
+    <header class="space-y-2 text-center">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary-600">
+        Official Water Rates
+      </p>
       <h2 class="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-        Payment Guide
+        Water consumption and fees
       </h2>
-      <p class="text-sm text-slate-600 sm:text-base">
-        A step-by-step guide to paying your water bill securely.
+      <p class="mx-auto max-w-xl text-sm text-slate-600 sm:text-base">
+        Current water consumption brackets and corresponding charges for Cordova Water System Inc.
+        For clarifications or updates, please coordinate directly with the CWSI office.
       </p>
     </header>
 
-    <div class="grid gap-8 md:grid-cols-[3fr,2fr] md:items-start">
-      <div class="space-y-4">
-        <div
-          class="rounded-2xl bg-white/90 p-5 text-sm text-slate-700 shadow-sm ring-1 ring-slate-100"
-        >
-          <ol class="space-y-3 text-xs sm:text-sm">
-            <li><span class="font-semibold">1.</span> Prepare your latest water bill.</li>
-            <li>
-              <span class="font-semibold">2.</span> Choose your preferred payment channel below.
-            </li>
-            <li>
-              <span class="font-semibold">3.</span> Provide your account name and service address.
-            </li>
-            <li>
-              <span class="font-semibold">4.</span> Keep your transaction receipt or screenshot as
-              proof of payment.
-            </li>
-          </ol>
-        </div>
-
-        <div class="grid gap-4 sm:grid-cols-2">
+    <div class="flex justify-center">
+      <div
+        class="w-full max-w-2xl overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 to-sky-700 p-[2px] shadow-[0_22px_55px_rgba(15,23,42,0.28)]"
+      >
+        <div class="overflow-hidden rounded-[1.3rem] bg-sky-600">
           <div
-            class="flex flex-col justify-between gap-3 rounded-2xl bg-gradient-to-br from-sky-500 via-sky-600 to-sky-700 p-4 text-slate-50 shadow-soft"
+            class="bg-gradient-to-r from-sky-500 to-sky-400 px-6 py-4 text-center text-slate-50"
           >
-            <div class="space-y-1">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sky-200">
-                GCash
-              </p>
-              <h3 class="text-sm font-semibold">Fast & Mobile Friendly</h3>
-              <p class="text-[0.7rem] text-sky-100">
-                Pay your bills anytime, anywhere using the GCash app.
-              </p>
-            </div>
-            <p class="text-[0.68rem] text-sky-100">
-              Use the official CWSI payee details provided at the office or via official channels.
+            <p class="text-xs font-semibold uppercase tracking-[0.22em]">
+              Water consumption and fees
+            </p>
+            <p class="mt-1 text-[0.8rem] text-sky-100">
+              Residential / Commercial – Bag‑ong presyo kada kubiko
             </p>
           </div>
 
-          <div
-            class="flex flex-col justify-between gap-3 rounded-2xl bg-white/95 p-4 text-slate-900 shadow-sm ring-1 ring-slate-100"
-          >
-            <div class="space-y-1">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-600">
-                Palawan Express
-              </p>
-              <h3 class="text-sm font-semibold">In-Store & Mobile App</h3>
-              <p class="text-[0.7rem] text-slate-600">
-                Visit any Palawan outlet or use the app to pay your water bill.
-              </p>
+          <div class="bg-sky-600 px-4 pb-4 pt-3 text-[0.78rem] text-slate-50 sm:px-6">
+            <div
+              class="grid grid-cols-[1.3fr,1.5fr,1.1fr] items-center rounded-2xl bg-sky-700/60 px-3 py-2 font-semibold uppercase tracking-[0.12em]"
+            >
+              <div class="text-[0.7rem]">Konsumo (kubiko)</div>
+              <div class="text-[0.7rem] text-center">Residential / Commercial</div>
+              <div class="text-[0.7rem] text-right">Remarks</div>
             </div>
-            <p class="text-[0.68rem] text-slate-500">
-              Present your account details and confirm the beneficiary name as Cordova Water System
-              Inc.
+
+            <div class="mt-2 space-y-1.5 rounded-2xl bg-sky-700/30 p-2">
+              <div
+                class="grid grid-cols-[1.3fr,1.5fr,1.1fr] items-center rounded-xl bg-sky-700/60 px-3 py-2"
+              >
+                <div class="font-semibold">0 – 5</div>
+                <div class="text-center font-semibold">₱ 175.00</div>
+                <div class="text-right text-[0.75rem]">Minimum</div>
+              </div>
+              <div
+                class="grid grid-cols-[1.3fr,1.5fr,1.1fr] items-center rounded-xl bg-sky-700/40 px-3 py-2"
+              >
+                <div>6 – 10</div>
+                <div class="text-center">₱ 55.00</div>
+                <div class="text-right text-[0.75rem]">kada kubiko</div>
+              </div>
+              <div
+                class="grid grid-cols-[1.3fr,1.5fr,1.1fr] items-center rounded-xl bg-sky-700/30 px-3 py-2"
+              >
+                <div>11 – 20</div>
+                <div class="text-center">₱ 97.00</div>
+                <div class="text-right text-[0.75rem]">kada kubiko</div>
+              </div>
+              <div
+                class="grid grid-cols-[1.3fr,1.5fr,1.1fr] items-center rounded-xl bg-sky-700/20 px-3 py-2"
+              >
+                <div>Over 21</div>
+                <div class="text-center">₱ 117.00</div>
+                <div class="text-right text-[0.75rem]">kada kubiko</div>
+              </div>
+            </div>
+
+            <p class="mt-2 text-[0.68rem] text-sky-100">
+              Note: Rates shown are for display purposes and should be validated against the latest
+              official CWSI tariff and advisories.
             </p>
           </div>
         </div>
       </div>
-
-      <aside
-        class="space-y-4 rounded-2xl bg-slate-900/95 p-5 text-slate-50 shadow-soft ring-1 ring-slate-800"
-      >
-        <h3 class="text-sm font-semibold">Payment Summary</h3>
-        <p class="text-xs text-slate-300">
-          This is a guide layout only. Connect it to your billing system to show live balances and
-          due dates.
-        </p>
-
-        <div class="mt-3 space-y-3 rounded-2xl bg-slate-800/90 p-3 text-xs">
-          <div class="flex items-center justify-between">
-            <span class="text-slate-300">Account Name</span>
-            <span class="font-semibold text-slate-50">Juan Dela Cruz</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-slate-300">Service Address</span>
-            <span class="font-semibold text-slate-50">Cordova, Cebu</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-slate-300">Current Balance</span>
-            <span class="font-semibold text-amber-300">₱ 0.00</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-slate-300">Due Date</span>
-            <span class="font-semibold text-emerald-300">--</span>
-          </div>
-        </div>
-
-        <p class="text-[0.7rem] text-slate-400">
-          Tip: Always double-check account numbers and official channels before sending payment.
-        </p>
-      </aside>
     </div>
   </section>
 </template>
