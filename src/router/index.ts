@@ -5,7 +5,6 @@ import ServicesView from '../views/ServicesView.vue'
 import ContactView from '../views/ContactView.vue'
 import PaymentView from '../views/PaymentView.vue'
 import RequestServiceView from '../views/RequestServiceView.vue'
-import AuthView from '../views/AuthView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -16,7 +15,6 @@ const router = createRouter({
     { path: '/contact', name: 'contact', component: ContactView },
     { path: '/payment', name: 'payment', component: PaymentView },
     { path: '/request-service', name: 'request-service', component: RequestServiceView },
-    { path: '/login', name: 'login', component: AuthView },
   ],
   scrollBehavior() {
     return { top: 0 }
