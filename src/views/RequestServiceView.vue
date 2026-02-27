@@ -6,7 +6,8 @@
           Service Request
         </h2>
         <p class="mt-2 text-sm text-slate-600 sm:text-base">
-          Fill out the form below. Our team will get back to you as soon as possible.
+          Fill out the form below. Your request details will open in your email app so you can send
+          them directly to our team.
         </p>
 
         <form
@@ -47,7 +48,7 @@
               <span class="text-rose-500">*</span>
             </label>
             <input
-              v-model="form.contact"
+              v-model="form.contactNumber"
               type="tel"
               required
               class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 outline-none ring-primary-200 transition placeholder:text-slate-400 focus:bg-white focus:ring"
@@ -61,7 +62,7 @@
               <span class="text-rose-500">*</span>
             </label>
             <select
-              v-model="form.type"
+              v-model="form.serviceType"
               required
               class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 outline-none ring-primary-200 transition focus:bg-white focus:ring"
             >
@@ -88,17 +89,23 @@
           <button
             type="submit"
             class="inline-flex items-center justify-center rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-primary-700 disabled:cursor-not-allowed disabled:bg-primary-300"
+            :disabled="loading"
           >
-            Submit Request
+            {{ loading ? 'Submitting...' : 'Submit Request' }}
           </button>
 
           <p
-            v-if="submitted"
+            v-if="success"
             class="flex items-center gap-2 text-xs text-emerald-600"
           >
             <CheckCircleIcon class="h-4 w-4" />
-            Your request has been recorded for demonstration. Connect this form to your backend or
-            email service to receive submissions.
+            {{ success }}
+          </p>
+          <p
+            v-if="error"
+            class="flex items-center gap-2 text-xs text-rose-600"
+          >
+            {{ error }}
           </p>
         </form>
       </div>
@@ -122,6 +129,14 @@
               <span class="font-semibold text-sky-200">(032) 383 3520</span>
             </p>
           </div>
+          <a
+            :href="messengerLink"
+            target="_blank"
+            rel="noopener"
+            class="mt-3 inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-xs font-semibold text-white shadow-soft transition hover:bg-sky-400"
+          >
+            Message us on Facebook
+          </a>
         </div>
       </aside>
     </div>
@@ -129,21 +144,58 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { CheckCircleIcon } from '@heroicons/vue/24/outline'
+
+const ADMIN_EMAIL = 'cwsi.admin@example.com'
+const MESSENGER_PAGE = 'https://www.facebook.com/profile.php?id=61562900730330'
 
 const form = reactive({
   fullName: '',
   address: '',
-  contact: '',
-  type: '',
+  contactNumber: '',
+  serviceType: '',
   details: '',
 })
 
-const submitted = ref(false)
+const loading = ref(false)
+const success = ref<string | null>(null)
+const error = ref<string | null>(null)
 
-function handleSubmit() {
-  submitted.value = true
+const messengerLink = computed(() => MESSENGER_PAGE)
+
+async function handleSubmit() {
+  loading.value = true
+  success.value = null
+  error.value = null
+
+  try {
+    const subject = `Service Request - ${form.serviceType || 'General'}`
+    const bodyLines = [
+      `Full Name: ${form.fullName}`,
+      `Address: ${form.address}`,
+      `Contact Number: ${form.contactNumber}`,
+      `Service Type: ${form.serviceType}`,
+      '',
+      'Additional Details:',
+      form.details || '(none)',
+    ]
+
+    const body = bodyLines.join('\n')
+
+    const mailtoUrl = `mailto:${encodeURIComponent(ADMIN_EMAIL)}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`
+
+    window.location.href = mailtoUrl
+
+    success.value =
+      'Your email app has been opened. Please review and send the message to complete your request.'
+  } catch (err: any) {
+    error.value = 'Failed to open your email client. Please try again or contact us directly.'
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
