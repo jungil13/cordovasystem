@@ -221,7 +221,7 @@ const features = [
   },
 ]
 
-const canShowInstallBanner = ref(false)
+const canShowInstallBanner = ref(import.meta.env.DEV)
 const deferredPrompt = ref<Event | null>(null)
 
 const checkStandalone = () =>
