@@ -38,27 +38,34 @@
       <div
         class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 via-sky-500 to-sky-700 p-1 shadow-soft"
       >
-        <div class="space-y-4 rounded-[1.4rem] bg-slate-950/95 p-5 text-slate-50">
+        <div class="space-y-4 rounded-[1.4rem] bg-slate-950/95 p-6 text-slate-50">
           <h3 class="text-sm font-semibold">Our Team</h3>
           <p class="text-xs text-slate-300">
             Dedicated professionals working behind the scenes to keep Cordova’s water flowing.
           </p>
-          <div class="mt-3 grid grid-cols-2 gap-3 text-xs sm:grid-cols-4">
+          <div class="mt-4 grid grid-cols-2 gap-4 text-xs sm:grid-cols-4">
             <div
               v-for="member in team"
-              :key="member.role"
-              class="flex flex-col items-center gap-2 rounded-2xl bg-slate-900/70 p-3"
+              :key="member.name"
+              class="flex flex-col items-center gap-2 rounded-2xl bg-slate-900/70 p-4"
             >
               <div
-                class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500/90 text-sm font-semibold"
+                class="h-20 w-20 overflow-hidden rounded-full border-2 border-sky-400 bg-slate-800 shadow-soft"
               >
-                {{ member.initial }}
+                <img
+                  :src="member.photo"
+                  :alt="member.name"
+                  class="h-full w-full object-cover"
+                />
               </div>
               <div class="text-center leading-tight">
-                <p class="text-[0.7rem] font-semibold text-slate-50">
+                <p class="text-[0.8rem] font-semibold text-slate-50">
+                  {{ member.name }}
+                </p>
+                <p class="text-[0.7rem] text-sky-300">
                   {{ member.role }}
                 </p>
-                <p class="text-[0.65rem] text-slate-400">
+                <p class="mt-0.5 text-[0.65rem] text-slate-400">
                   {{ member.label }}
                 </p>
               </div>
@@ -101,45 +108,69 @@
         </div>
       </div>
 
-      <!-- Actual photo grid – uses whatever images you placed in src/assets/foraboutpage -->
       <h4 class="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
         Operations in Pictures
       </h4>
-      <div class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <button
-          v-for="(img, index) in aboutImages"
-          :key="img.src"
-          type="button"
-          class="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-300"
-          @click="openLightbox(index)"
-        >
-          <img
-            :src="img.src"
-            :alt="img.alt"
-            class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-slate-950/10 to-transparent opacity-0 transition group-hover:opacity-100"
-          />
-          <div
-            class="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-3 p-3 opacity-0 transition group-hover:opacity-100"
-          >
-            <p class="line-clamp-1 text-left text-xs font-semibold text-white drop-shadow">
-              {{ img.label }}
-            </p>
-            <div
-              class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 text-white ring-1 ring-white/30 backdrop-blur"
-            >
-              <MagnifyingGlassPlusIcon class="h-5 w-5" />
+      <div
+        class="mt-3 overflow-hidden rounded-3xl bg-slate-950/95 p-4 text-slate-50 shadow-soft ring-1 ring-slate-900/70"
+      >
+        <div class="relative overflow-hidden rounded-2xl bg-slate-900">
+          <div class="cwsi-marquee">
+            <div class="cwsi-marquee__track">
+              <button
+                v-for="(img, index) in aboutImages"
+                :key="img.key"
+                type="button"
+                class="group relative h-28 w-44 shrink-0 overflow-hidden rounded-xl bg-slate-800 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-sky-400 sm:h-32 sm:w-52"
+                @click="openLightbox(index)"
+              >
+                <img :src="img.src" :alt="img.alt" class="h-full w-full object-cover" />
+                <div
+                  class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/5 to-transparent opacity-80"
+                ></div>
+                <p
+                  class="pointer-events-none absolute bottom-2 left-2 right-2 line-clamp-1 text-left text-[0.65rem] font-semibold text-white drop-shadow"
+                >
+                  {{ img.label }}
+                </p>
+              </button>
+
+              <button
+                v-for="(img, index) in aboutImages"
+                :key="`dup-${img.key}`"
+                type="button"
+                class="group relative h-28 w-44 shrink-0 overflow-hidden rounded-xl bg-slate-800 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-sky-400 sm:h-32 sm:w-52"
+                @click="openLightbox(index)"
+              >
+                <img :src="img.src" :alt="img.alt" class="h-full w-full object-cover" />
+                <div
+                  class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/5 to-transparent opacity-80"
+                ></div>
+                <p
+                  class="pointer-events-none absolute bottom-2 left-2 right-2 line-clamp-1 text-left text-[0.65rem] font-semibold text-white drop-shadow"
+                >
+                  {{ img.label }}
+                </p>
+              </button>
             </div>
           </div>
-        </button>
+
+          <div
+            class="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-slate-950/80 to-transparent"
+          ></div>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-slate-950/80 to-transparent"
+          ></div>
+        </div>
+
+        <div class="mt-3 flex items-center justify-between text-[0.72rem] text-slate-300">
+          <p>Click any photo to view.</p>
+          <p v-if="aboutImages.length">{{ aboutImages.length }} photos</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Lightbox -->
   <Transition
     enter-active-class="transition duration-200 ease-out"
     enter-from-class="opacity-0"
@@ -153,16 +184,16 @@
       class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 p-4 backdrop-blur-sm"
       @click.self="closeLightbox"
     >
-      <div class="relative w-full max-w-5xl">
+      <div class="w-full max-w-5xl">
         <div class="relative overflow-hidden rounded-3xl bg-slate-900 shadow-2xl ring-1 ring-white/10">
           <img
             :src="currentImage?.src"
             :alt="currentImage?.alt"
-            class="max-h-[75vh] w-full object-contain bg-slate-950"
+            class="max-h-[75vh] w-full bg-slate-950 object-contain"
           />
 
           <div
-            class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-slate-950/80 via-slate-950/15 to-transparent p-4"
+            class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent p-4"
           >
             <div class="min-w-0">
               <p class="truncate text-sm font-semibold text-white">
@@ -209,15 +240,18 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import {
   BeakerIcon,
   WrenchScrewdriverIcon,
-  TruckIcon,
   ShieldCheckIcon,
   UsersIcon,
   MapIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  MagnifyingGlassPlusIcon,
   XMarkIcon,
 } from '@heroicons/vue/24/outline'
+
+import staff1 from '../images/foraboutpage/1.jfif'
+import staff2 from '../images/foraboutpage/2.jfif'
+import staff3 from '../images/foraboutpage/3.jfif'
+import staff4 from '../images/foraboutpage/4.jfif'
 
 type AboutImage = { src: string; label: string; alt: string; key: string }
 
@@ -275,6 +309,8 @@ function prevImage() {
   currentIndex.value = (currentIndex.value - 1 + aboutImages.length) % aboutImages.length
 }
 
+let sliderTimer: number | null = null
+
 function onKeyDown(e: KeyboardEvent) {
   if (!lightboxOpen.value) return
   if (e.key === 'Escape') closeLightbox()
@@ -282,14 +318,28 @@ function onKeyDown(e: KeyboardEvent) {
   if (e.key === 'ArrowLeft') prevImage()
 }
 
-onMounted(() => window.addEventListener('keydown', onKeyDown))
-onBeforeUnmount(() => window.removeEventListener('keydown', onKeyDown))
+onMounted(() => {
+  window.addEventListener('keydown', onKeyDown)
+  if (aboutImages.length > 1) {
+    sliderTimer = window.setInterval(() => {
+      nextImage()
+    }, 6000)
+  }
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', onKeyDown)
+  if (sliderTimer) {
+    window.clearInterval(sliderTimer)
+    sliderTimer = null
+  }
+})
 
 const team = [
-  { initial: 'A', role: 'Admin', label: 'Service coordination' },
-  { initial: 'B', role: 'Billing', label: 'Accounts & payments' },
-  { initial: 'M', role: 'Maintenance', label: 'Field operations' },
-  { initial: 'M', role: 'Manager', label: 'Systems oversight' },
+  { name: 'Admin Staff', role: 'Admin', label: 'Service coordination', photo: staff1 },
+  { name: 'Billing Staff', role: 'Billing', label: 'Accounts & payments', photo: staff2 },
+  { name: 'Maintenance Team', role: 'Maintenance', label: 'Field operations', photo: staff3 },
+  { name: 'Operations Head', role: 'Manager', label: 'Systems oversight', photo: staff4 },
 ]
 
 const gallery = [
@@ -320,4 +370,40 @@ const gallery = [
   },
 ]
 </script>
+
+<style scoped>
+@keyframes cwsi-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.cwsi-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.cwsi-marquee__track {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  width: fit-content;
+  will-change: transform;
+  animation: cwsi-marquee 28s linear infinite;
+}
+
+.cwsi-marquee:hover .cwsi-marquee__track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cwsi-marquee__track {
+    animation: none;
+    overflow-x: auto;
+  }
+}
+</style>
 
