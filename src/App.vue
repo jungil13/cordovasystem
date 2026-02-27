@@ -84,12 +84,6 @@
           >
             Request Service
           </RouterLink>
-          <RouterLink
-            to="/login"
-            class="rounded-xl bg-primary-600 px-3.5 py-2 text-xs font-semibold text-white shadow-soft transition hover:bg-primary-700"
-          >
-            Login
-          </RouterLink>
         </div>
       </nav>
 
@@ -122,13 +116,6 @@
               @click="isMobileNavOpen = false"
             >
               Request Service
-            </RouterLink>
-            <RouterLink
-              to="/login"
-              class="mt-1 rounded-lg bg-primary-600 px-3 py-2 text-center text-xs font-semibold text-white shadow-soft"
-              @click="isMobileNavOpen = false"
-            >
-              Login
             </RouterLink>
           </div>
         </div>
