@@ -164,7 +164,7 @@ const navItems = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
-  { label: 'Payment', to: '/payment' },
+  { label: 'Water Rates', to: '/payment' },
   { label: 'Contact', to: '/contact' },
   { label: 'Request Service', to: '/request-service' },
 ]
