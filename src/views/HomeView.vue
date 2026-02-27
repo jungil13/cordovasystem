@@ -29,46 +29,75 @@
           </p>
         </div>
 
-      <div class="flex flex-wrap items-center gap-3">
-        <RouterLink
-          to="/request-service"
-          class="inline-flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-primary-700"
-        >
-          Request Service
-        </RouterLink>
-        <RouterLink
-          to="/payment"
-          class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-primary-200 hover:bg-primary-50/80 hover:text-primary-800"
-        >
-          View Water Rates
-        </RouterLink>
-        <RouterLink
-          to="/contact"
-          class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-primary-700"
-        >
-          Contact Us
-        </RouterLink>
-      </div>
-
-      <div
-        class="grid gap-4 rounded-2xl bg-white/80 p-4 shadow-[0_18px_45px_rgba(15,118,255,0.08)] ring-1 ring-slate-100 sm:grid-cols-2"
-      >
-        <div v-for="feature in features" :key="feature.title" class="flex gap-3">
-          <div
-            class="mt-1 flex h-9 w-9 items-center justify-center rounded-xl bg-primary-50 text-primary-700"
+        <div class="flex flex-wrap items-center gap-3">
+          <RouterLink
+            to="/request-service"
+            class="inline-flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-primary-700"
           >
-            <component :is="feature.icon" class="h-5 w-5" />
+            Request Service
+          </RouterLink>
+          <RouterLink
+            to="/payment"
+            class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-primary-200 hover:bg-primary-50/80 hover:text-primary-800"
+          >
+            View Water Rates
+          </RouterLink>
+          <RouterLink
+            to="/contact"
+            class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-primary-700"
+          >
+            Contact Us
+          </RouterLink>
+        </div>
+
+        <div
+          v-if="canShowInstallBanner"
+          class="mt-6 flex items-center gap-4 rounded-2xl bg-slate-900/90 p-4 text-slate-50 shadow-soft ring-1 ring-slate-800 max-w-md"
+        >
+          <div
+            class="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-800 text-sky-300"
+          >
+            <PhoneIcon class="h-6 w-6" />
           </div>
-          <div>
-            <h3 class="text-sm font-semibold text-slate-900">
-              {{ feature.title }}
-            </h3>
-            <p class="mt-1 text-xs text-slate-500">
-              {{ feature.description }}
+          <div class="flex-1 space-y-1">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">
+              Mobile Mode Available
+            </p>
+            <p class="text-sm font-semibold">
+              Install the CWSI app on your phone
+            </p>
+            <p class="text-[0.72rem] text-slate-300">
+              Get a fast, app-like experience for payments, service requests, and updates.
             </p>
           </div>
+          <button
+            type="button"
+            class="inline-flex items-center rounded-xl bg-sky-400 px-3 py-2 text-[0.7rem] font-semibold text-slate-950 shadow-soft transition hover:bg-sky-300"
+            @click="handleInstallClick"
+          >
+            Download now
+          </button>
         </div>
-      </div>
+
+        <div
+          class="grid gap-4 rounded-2xl bg-white/80 p-4 shadow-[0_18px_45px_rgba(15,118,255,0.08)] ring-1 ring-slate-100 sm:grid-cols-2"
+        >
+          <div v-for="feature in features" :key="feature.title" class="flex gap-3">
+            <div
+              class="mt-1 flex h-9 w-9 items-center justify-center rounded-xl bg-primary-50 text-primary-700"
+            >
+              <component :is="feature.icon" class="h-5 w-5" />
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-slate-900">
+                {{ feature.title }}
+              </h3>
+              <p class="mt-1 text-xs text-slate-500">
+                {{ feature.description }}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
     <div
@@ -152,6 +181,7 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 import {
   SparklesIcon,
   ShieldCheckIcon,
@@ -190,5 +220,45 @@ const features = [
     icon: CreditCardIcon,
   },
 ]
+
+const canShowInstallBanner = ref(false)
+const deferredPrompt = ref<Event | null>(null)
+
+const checkStandalone = () =>
+  window.matchMedia('(display-mode: standalone)').matches ||
+  (window.navigator as any).standalone === true
+
+const beforeInstallHandler = (e: Event) => {
+  e.preventDefault()
+  deferredPrompt.value = e
+  if (!checkStandalone()) {
+    canShowInstallBanner.value = true
+  }
+}
+
+const handleInstallClick = async () => {
+  const promptEvent = deferredPrompt.value as any
+  if (!promptEvent) return
+
+  await promptEvent.prompt()
+  const { outcome } = await promptEvent.userChoice
+  if (outcome === 'accepted') {
+    canShowInstallBanner.value = false
+    deferredPrompt.value = null
+  }
+}
+
+onMounted(() => {
+  if (checkStandalone()) {
+    canShowInstallBanner.value = false
+    return
+  }
+
+  window.addEventListener('beforeinstallprompt', beforeInstallHandler as any)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeinstallprompt', beforeInstallHandler as any)
+})
 </script>
 
