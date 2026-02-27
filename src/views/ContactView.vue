@@ -88,6 +88,27 @@
             </div>
           </div>
         </dl>
+
+        <div class="mt-4 overflow-hidden rounded-2xl border border-slate-200">
+          <div class="border-b border-slate-100 bg-slate-50 px-4 py-2">
+            <p class="text-xs font-semibold text-slate-800">
+              Visit Cordova Water System Inc.
+            </p>
+            <p class="text-[0.68rem] text-slate-500">
+              Sitio Bakhawan, Cordova, Cebu
+            </p>
+          </div>
+          <div class="aspect-[4/3] w-full">
+            <iframe
+              class="h-full w-full border-0"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1615.6269387274376!2d123.96285581934191!3d10.26501748658231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99a7203807cf7%3A0x93a9ec1809b4d51c!2sCORDOVA%20WATER%20SYSTEM%20INC!5e1!3m2!1sen!2sph!4v1772207465216!5m2!1sen!2sph"
+              style="border: 0"
+              :allowfullscreen="true"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
       </aside>
     </div>
   </section>
