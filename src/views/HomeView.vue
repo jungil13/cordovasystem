@@ -18,10 +18,9 @@
 
         <div class="space-y-4">
           <h1
-            class="text-balance text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+            class="text-balance text-3xl font-semibold tracking-tight text-slate-50 drop-shadow-sm sm:text-4xl lg:text-5xl"
           >
-            Cordova Water
-            <span class="text-primary-600">System Inc.</span>
+            {{ typedTitle || 'Cordova Water System Inc.' }}
           </h1>
           <p class="max-w-xl text-sm text-slate-800 font-semibold drop-shadow sm:text-base">
             Ensuring clean water for a healthier tomorrow. We provide reliable water services to
@@ -41,12 +40,6 @@
             class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-primary-200 hover:bg-primary-50/80 hover:text-primary-800"
           >
             View Water Rates
-          </RouterLink>
-          <RouterLink
-            to="/contact"
-            class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-primary-700"
-          >
-            Contact Us
           </RouterLink>
         </div>
 
@@ -178,30 +171,154 @@
     </div>
     </div>
 
-    <section class="mx-auto mt-10 max-w-6xl px-4 pb-16 lg:px-0">
-      <div
-        class="overflow-hidden rounded-3xl bg-white/90 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-100"
-      >
-        <div class="border-b border-slate-100 px-6 py-4">
-          <h2 class="text-base font-semibold tracking-tight text-slate-900">
-            Visit Cordova Water System Inc.
+    <!-- Advisory + Rates preview -->
+    <section class="mx-auto mt-10 max-w-6xl px-4 lg:px-0">
+      <div class="grid gap-6 lg:grid-cols-[3fr,2fr]">
+        <article
+          class="space-y-3 rounded-3xl bg-white/95 p-5 shadow-[0_18px_45px_rgba(15,23,42,0.08)] ring-1 ring-slate-100"
+        >
+          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-primary-600">
+            Customer Advisory
+          </p>
+          <h2 class="text-sm font-semibold text-slate-900 sm:text-base">
+            CWSI Service Updates for Cordova Residents
           </h2>
-          <p class="mt-1 text-xs text-slate-500">
-            Find our office easily on the map below.
+          <p class="text-xs text-slate-600 sm:text-[0.8rem]">
+            For weather disturbances, mainline repairs, or scheduled maintenance, updates will be
+            posted on our official Facebook page and at the CWSI office. Please ensure your contact
+            information is updated so we can reach you for important notices.
+          </p>
+          <ul class="mt-2 space-y-1 text-[0.72rem] text-slate-600">
+            <li>• Pay bills on or before the due date to avoid penalties and disconnection.</li>
+            <li>• Report leaks or no-water incidents immediately through our hotline or Messenger.</li>
+            <li>• Always keep your service line and meter area accessible to our personnel.</li>
+          </ul>
+        </article>
+
+        <aside
+          class="space-y-3 rounded-3xl bg-slate-900/95 p-5 text-slate-50 shadow-soft ring-1 ring-slate-800"
+        >
+          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-sky-300">
+            Water Consumption & Fees
+          </p>
+          <p class="text-xs text-slate-200">
+            View the latest Cordova water consumption brackets, minimum charges, and per‑cubic‑meter
+            rates on our Water Rates page.
+          </p>
+          <div class="mt-2 rounded-2xl bg-slate-900/70 p-3 text-[0.7rem]">
+            <div class="flex items-center justify-between text-slate-300">
+              <span>Residential / Commercial</span>
+              <span class="font-semibold text-sky-200">See full table</span>
+            </div>
+            <p class="mt-1 text-[0.65rem] text-slate-400">
+              Effectivity date and detailed brackets are maintained by CWSI and may change with
+              regulatory approvals.
+            </p>
+          </div>
+          <RouterLink
+            to="/payment"
+            class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-[0.7rem] font-semibold text-white shadow-soft transition hover:bg-sky-400"
+          >
+            View complete water rates
+          </RouterLink>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Vision / Mission / Slogan -->
+    <section class="mx-auto mt-10 max-w-6xl px-4 lg:px-0">
+      <div class="grid gap-6 lg:grid-cols-3">
+        <div class="space-y-2 rounded-2xl bg-white/90 p-5 shadow-sm ring-1 ring-slate-100">
+          <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+            Vision
+          </h2>
+          <p class="text-sm font-semibold text-slate-900">
+            Safe and sustainable water for every household and business in Cordova, Cebu.
+          </p>
+          <p class="text-xs text-slate-600">
+            Supporting the municipality’s growth by ensuring reliable, community‑focused water
+            services.
           </p>
         </div>
-        <div class="aspect-[4/3] w-full">
-          <iframe
-            class="h-full w-full border-0"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1615.6269387274376!2d123.96285581934191!3d10.26501748658231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99a7203807cf7%3A0x93a9ec1809b4d51c!2sCORDOVA%20WATER%20SYSTEM%20INC!5e1!3m2!1sen!2sph!4v1772207465216!5m2!1sen!2sph"
-            style="border: 0"
-            :allowfullscreen="true"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+        <div class="space-y-2 rounded-2xl bg-white/90 p-5 shadow-sm ring-1 ring-slate-100">
+          <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+            Mission
+          </h2>
+          <p class="text-sm font-semibold text-slate-900">
+            Provide clean, safe, and affordable water while protecting our sources and environment.
+          </p>
+          <p class="text-xs text-slate-600">
+            From treatment to distribution, we uphold strict quality and operational standards for
+            Cordova residents.
+          </p>
+        </div>
+        <div class="space-y-2 rounded-2xl bg-slate-900 p-5 text-slate-50 shadow-sm ring-1 ring-slate-800">
+          <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">
+            Slogan
+          </h2>
+          <p class="text-sm font-semibold">
+            Clean. Safe. Reliable water for Cordova.
+          </p>
+          <p class="text-xs text-slate-300">
+            CWSI serves beyond pipelines—supporting health, livelihood, and sustainable local
+            development.
+          </p>
         </div>
       </div>
     </section>
+
+    <!-- Services / Application Process -->
+    <section class="mx-auto mt-10 max-w-6xl px-4 pb-16 lg:px-0">
+      <div
+        class="grid gap-8 rounded-3xl bg-white/95 p-6 shadow-sm ring-1 ring-slate-100 lg:grid-cols-[3fr,2fr]"
+      >
+        <div class="space-y-3">
+          <h2 class="text-base font-semibold tracking-tight text-slate-900 sm:text-lg">
+            Level 3 Water Distribution for Cordova
+          </h2>
+          <p class="text-xs text-slate-600 sm:text-[0.8rem]">
+            Cordova Water System Inc. operates a Level 3 water supply system, providing piped
+            distribution directly to households, businesses, and public facilities across the
+            municipality.
+          </p>
+          <p class="text-xs font-semibold text-slate-700">
+            Standard Service Application Flow:
+          </p>
+          <ol class="mt-1 space-y-2 text-[0.75rem] text-slate-600">
+            <li>1. Visit the CWSI office or use the Request Service page to inquire.</li>
+            <li>2. Attend orientation or briefing on requirements and policies (if scheduled).</li>
+            <li>3. Submit application form and required documents for evaluation.</li>
+            <li>4. Hire a licensed plumber to install the service line from meter stand to house.</li>
+            <li>5. CWSI conducts site inspection and meter installation.</li>
+            <li>6. Service connection activation and contract orientation.</li>
+          </ol>
+        </div>
+
+        <div class="space-y-3 rounded-2xl bg-slate-900/95 p-5 text-slate-50">
+          <h3 class="text-sm font-semibold">Ready to apply?</h3>
+          <p class="text-xs text-slate-300">
+            Start your connection process online and our team will guide you on the next steps.
+          </p>
+          <RouterLink
+            to="/request-service"
+            class="mt-2 inline-flex items-center justify-center rounded-xl bg-primary-500 px-4 py-2 text-xs font-semibold text-white shadow-soft transition hover:bg-primary-400"
+          >
+            Inquire now
+          </RouterLink>
+          <a
+            href="/application-form.pdf"
+            class="mt-2 inline-flex items-center justify-center rounded-xl border border-slate-600 bg-slate-950 px-4 py-2 text-xs font-semibold text-slate-50 shadow-sm transition hover:bg-slate-900"
+          >
+            Download application form
+          </a>
+          <p class="mt-1 text-[0.7rem] text-slate-400">
+            If you don’t have the digital form yet, this link can be updated later to point to your
+            official CWSI application PDF.
+          </p>
+        </div>
+      </div>
+    </section>
+
   </section>
 </template>
 
@@ -249,6 +366,30 @@ const features = [
 const canShowInstallBanner = ref(import.meta.env.DEV)
 const deferredPrompt = ref<Event | null>(null)
 
+const fullTitle = 'Cordova Water System Inc.'
+const typedTitle = ref('')
+let typingTimer: number | null = null
+
+const startTyping = () => {
+  if (typingTimer) {
+    window.clearInterval(typingTimer)
+  }
+
+  typedTitle.value = ''
+  let index = 0
+  const speed = 90
+
+  typingTimer = window.setInterval(() => {
+    typedTitle.value = fullTitle.slice(0, index + 1)
+    index += 1
+
+    if (index >= fullTitle.length && typingTimer) {
+      window.clearInterval(typingTimer)
+      typingTimer = null
+    }
+  }, speed)
+}
+
 const checkStandalone = () =>
   window.matchMedia('(display-mode: standalone)').matches ||
   (window.navigator as any).standalone === true
@@ -274,6 +415,8 @@ const handleInstallClick = async () => {
 }
 
 onMounted(() => {
+  startTyping()
+
   if (checkStandalone()) {
     canShowInstallBanner.value = false
     return
@@ -283,6 +426,11 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  if (typingTimer) {
+    window.clearInterval(typingTimer)
+    typingTimer = null
+  }
+
   window.removeEventListener('beforeinstallprompt', beforeInstallHandler as any)
 })
 </script>
