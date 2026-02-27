@@ -177,6 +177,31 @@
       </div>
     </div>
     </div>
+
+    <section class="mx-auto mt-10 max-w-6xl px-4 pb-16 lg:px-0">
+      <div
+        class="overflow-hidden rounded-3xl bg-white/90 shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-100"
+      >
+        <div class="border-b border-slate-100 px-6 py-4">
+          <h2 class="text-base font-semibold tracking-tight text-slate-900">
+            Visit Cordova Water System Inc.
+          </h2>
+          <p class="mt-1 text-xs text-slate-500">
+            Find our office easily on the map below.
+          </p>
+        </div>
+        <div class="aspect-[4/3] w-full">
+          <iframe
+            class="h-full w-full border-0"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1615.6269387274376!2d123.96285581934191!3d10.26501748658231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99a7203807cf7%3A0x93a9ec1809b4d51c!2sCORDOVA%20WATER%20SYSTEM%20INC!5e1!3m2!1sen!2sph!4v1772207465216!5m2!1sen!2sph"
+            style="border: 0"
+            :allowfullscreen="true"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
   </section>
 </template>
 
