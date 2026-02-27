@@ -44,26 +44,6 @@
             <div
               class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-50 text-primary-700"
             >
-              <TruckIcon class="h-5 w-5" />
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-slate-900">Water Distribution</h3>
-              <p class="text-xs text-slate-500">Safe and efficient water delivery network.</p>
-            </div>
-          </div>
-          <p class="text-xs text-slate-600">
-            From main lines to household connections, we manage the infrastructure that keeps water
-            flowing to your home.
-          </p>
-        </div>
-
-        <div
-          class="group flex flex-col gap-4 rounded-2xl bg-white/90 p-5 shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-primary-100"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-50 text-primary-700"
-            >
               <WrenchScrewdriverIcon class="h-5 w-5" />
             </div>
             <div>
@@ -128,6 +108,6 @@
 </template>
 
 <script setup lang="ts">
-import { BeakerIcon, TruckIcon, WrenchScrewdriverIcon, ShieldCheckIcon } from '@heroicons/vue/24/outline'
+import { BeakerIcon, WrenchScrewdriverIcon, ShieldCheckIcon } from '@heroicons/vue/24/outline'
 </script>
 
