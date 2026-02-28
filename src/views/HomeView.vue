@@ -336,11 +336,6 @@ const features = [
     icon: SparklesIcon,
   },
   {
-    title: '24/7 Support',
-    description: 'Round-the-clock assistance for your water needs.',
-    icon: PhoneIcon,
-  },
-  {
     title: 'Trusted Service',
     description: 'Decades of experience serving the Cordova community.',
     icon: ShieldCheckIcon,
