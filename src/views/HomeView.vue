@@ -122,17 +122,6 @@
             </div>
             <div class="space-y-1 rounded-2xl bg-slate-900/70 p-3">
               <dt class="text-[0.65rem] uppercase tracking-wide text-slate-400">
-                Support
-              </dt>
-              <dd class="text-sm font-semibold text-emerald-300">
-                24/7 Hotline
-              </dd>
-              <dd class="text-[0.68rem] text-slate-400">
-                For service & billing
-              </dd>
-            </div>
-            <div class="space-y-1 rounded-2xl bg-slate-900/70 p-3">
-              <dt class="text-[0.65rem] uppercase tracking-wide text-slate-400">
                 Experience
               </dt>
               <dd class="text-sm font-semibold text-amber-300">
