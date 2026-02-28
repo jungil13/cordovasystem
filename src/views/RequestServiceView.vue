@@ -121,7 +121,7 @@
           </p>
           <div class="mt-3 space-y-2 rounded-2xl bg-slate-900/80 p-3 text-xs">
             <p class="flex items-center justify-between">
-              <span class="text-slate-300">24/7 Hotline</span>
+              <span class="text-slate-300">Hotline</span>
               <span class="font-semibold text-sky-200">0991 702 3497</span>
             </p>
             <p class="flex items-center justify-between">
