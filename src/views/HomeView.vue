@@ -97,7 +97,7 @@
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import { PhoneIcon } from '@heroicons/vue/24/outline'
 
-import heroBg from '../images/background.png'
+import heroBg from '../images/background2.png'
 
 const heroBgStyle = {
   backgroundImage: `url(${heroBg})`,
