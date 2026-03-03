@@ -121,7 +121,7 @@
           </p>
           <div class="mt-3 space-y-2 rounded-2xl bg-slate-900/80 p-3 text-xs">
             <p class="flex items-center justify-between">
-              <span class="text-slate-300">Hotline</span>
+              <span class="text-slate-300">24/7 Hotline</span>
               <span class="font-semibold text-sky-200">0991 702 3497</span>
             </p>
             <p class="flex items-center justify-between">
@@ -147,7 +147,9 @@
 import { computed, reactive, ref } from 'vue'
 import { CheckCircleIcon } from '@heroicons/vue/24/outline'
 
-const ADMIN_EMAIL = 'cwsi.admin@example.com'
+// Set in .env as VITE_REQUEST_EMAIL=your-cwsi@gmail.com to receive requests in Gmail
+const REQUEST_EMAIL =
+  import.meta.env.VITE_REQUEST_EMAIL || 'cwsi.billing@abejoph.comm'
 const MESSENGER_PAGE = 'https://www.facebook.com/profile.php?id=61562900730330'
 
 const form = reactive({
@@ -183,7 +185,7 @@ async function handleSubmit() {
 
     const body = bodyLines.join('\n')
 
-    const mailtoUrl = `mailto:${encodeURIComponent(ADMIN_EMAIL)}?subject=${encodeURIComponent(
+    const mailtoUrl = `mailto:${encodeURIComponent(REQUEST_EMAIL)}?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(body)}`
 
