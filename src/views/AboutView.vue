@@ -21,15 +21,13 @@
           <div>
             <h3 class="text-sm font-semibold text-slate-900">Our Mission</h3>
             <p class="mt-1 text-xs text-slate-600">
-              Delivering reliable, clean water to every household in Cordova while maintaining the
-              highest standards of service and sustainability.
+              We provide safe and sustainable water to unserved and under-served communities in the Philippines, thereby improving people’s way of life and fostering growth and development
             </p>
           </div>
           <div>
             <h3 class="text-sm font-semibold text-slate-900">Our Vision</h3>
             <p class="mt-1 text-xs text-slate-600">
-              To be the most trusted water service provider in Cordova, known for excellence,
-              innovation, and unwavering dedication to community well-being.
+              To be a leading potable water supplier to cities and municipalities in the countryside, achieving 500 million in annual revenues within 5 years
             </p>
           </div>
         </div>
@@ -248,10 +246,10 @@ import {
   XMarkIcon,
 } from '@heroicons/vue/24/outline'
 
-import staff1 from '../images/foraboutpage/1.jfif'
-import staff2 from '../images/foraboutpage/2.jfif'
-import staff3 from '../images/foraboutpage/3.jfif'
-import staff4 from '../images/foraboutpage/4.jfif'
+import staff1 from '../images/foraboutpage/thumb.jpg'
+import staff2 from '../images/foraboutpage/thumb.jpg'
+import staff3 from '../images/foraboutpage/thumb.jpg'
+import staff4 from '../images/foraboutpage/thumb.jpg'
 
 type AboutImage = { src: string; label: string; alt: string; key: string }
 
@@ -268,6 +266,7 @@ function loadAboutImages(): AboutImage[] {
   } as Record<string, string>
 
   return Object.entries(sources)
+    .filter(([key]) => !/thumb\.(png|jpg|jpeg|webp|svg|jfif)$/i.test(key))
     .sort(([a], [b]) => a.localeCompare(b))
     .slice(0, 6)
     .map(([key, src], i) => {
