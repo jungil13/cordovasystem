@@ -185,16 +185,27 @@ async function handleSubmit() {
 
     const body = bodyLines.join('\n')
 
-    const mailtoUrl = `mailto:${encodeURIComponent(REQUEST_EMAIL)}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`
+    const encodedSubject = encodeURIComponent(subject)
+    const encodedBody = encodeURIComponent(body)
 
-    window.location.href = mailtoUrl
+    // Detect mobile device
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+
+    if (isMobile) {
+      // Mobile → open default mail app (Gmail app)
+      const mailtoUrl = `mailto:${REQUEST_EMAIL}?subject=${encodedSubject}&body=${encodedBody}`
+      window.location.href = mailtoUrl
+    } else {
+      // Desktop → open Gmail in browser
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${REQUEST_EMAIL}&su=${encodedSubject}&body=${encodedBody}`
+      window.open(gmailUrl, '_blank')
+    }
 
     success.value =
-      'Your email app has been opened. Please review and send the message to complete your request.'
+      'Please review and send the message to complete your request.'
   } catch (err: any) {
-    error.value = 'Failed to open your email client. Please try again or contact us directly.'
+    error.value =
+      'Failed to open email. Please try again or contact us directly.'
   } finally {
     loading.value = false
   }
