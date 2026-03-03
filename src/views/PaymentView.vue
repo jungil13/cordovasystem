@@ -52,35 +52,35 @@
               <div
                 class="grid grid-cols-[1.3fr,1.5fr,1.1fr] items-center rounded-xl bg-sky-700/60 px-3 py-2"
               >
-                <div class="font-semibold">0 – 5 m³</div>
+                <div class="font-semibold">0 – 5 cu. m</div>
                 <div class="text-center font-semibold">₱220</div>
                 <div class="text-right text-[0.75rem]">Minimum charge</div>
               </div>
               <div
                 class="grid grid-cols-[1.3fr,1.5fr,1.1fr] items-center rounded-xl bg-sky-700/40 px-3 py-2"
               >
-                <div>6 – 10 m³</div>
+                <div>6 – 10 cu. m</div>
                 <div class="text-center">₱48</div>
                 <div class="text-right text-[0.75rem]">Per cubic meter</div>
               </div>
               <div
                 class="grid grid-cols-[1.3fr,1.5fr,1.1fr] items-center rounded-xl bg-sky-700/30 px-3 py-2"
               >
-                <div>11 – 20 m³</div>
+                <div>11 – 20 cu. m</div>
                 <div class="text-center">₱54</div>
                 <div class="text-right text-[0.75rem]">Per cubic meter</div>
               </div>
               <div
                 class="grid grid-cols-[1.3fr,1.5fr,1.1fr] items-center rounded-xl bg-sky-700/20 px-3 py-2"
               >
-                <div>21 – 30 m³</div>
+                <div>21 – 30 cu. m</div>
                 <div class="text-center">₱65</div>
                 <div class="text-right text-[0.75rem]">Per cubic meter</div>
               </div>
               <div
                 class="grid grid-cols-[1.3fr,1.5fr,1.1fr] items-center rounded-xl bg-sky-700/20 px-3 py-2"
               >
-                <div>31+ m³</div>
+                <div>31+ cu. m</div>
                 <div class="text-center">₱92</div>
                 <div class="text-right text-[0.75rem]">Per cubic meter</div>
               </div>
