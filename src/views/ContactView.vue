@@ -12,11 +12,14 @@
 
         <form
           class="mt-4 space-y-4 rounded-2xl bg-white/90 p-5 shadow-sm ring-1 ring-slate-100"
+          @submit.prevent="handleSubmit"
         >
           <div>
             <label class="text-xs font-medium text-slate-700">Name</label>
             <input
+              v-model="form.name"
               type="text"
+              required
               class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 outline-none ring-primary-200 transition placeholder:text-slate-400 focus:bg-white focus:ring"
               placeholder="Enter your name"
             />
@@ -25,7 +28,9 @@
             <div>
               <label class="text-xs font-medium text-slate-700">Email</label>
               <input
+                v-model="form.email"
                 type="email"
+                required
                 class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 outline-none ring-primary-200 transition placeholder:text-slate-400 focus:bg-white focus:ring"
                 placeholder="you@example.com"
               />
@@ -33,6 +38,7 @@
             <div>
               <label class="text-xs font-medium text-slate-700">Contact Number</label>
               <input
+                v-model="form.contactNumber"
                 type="tel"
                 class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 outline-none ring-primary-200 transition placeholder:text-slate-400 focus:bg-white focus:ring"
                 placeholder="e.g., 0912 345 6789"
@@ -42,17 +48,33 @@
           <div>
             <label class="text-xs font-medium text-slate-700">Message</label>
             <textarea
+              v-model="form.message"
               rows="4"
+              required
               class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 outline-none ring-primary-200 transition placeholder:text-slate-400 focus:bg-white focus:ring"
               placeholder="Let us know how we can assist you..."
             ></textarea>
           </div>
           <button
-            type="button"
-            class="inline-flex items-center justify-center rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-primary-700"
+            type="submit"
+            class="inline-flex items-center justify-center rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-primary-700 disabled:cursor-not-allowed disabled:bg-primary-300"
+            :disabled="loading"
           >
-            Send Message
+            {{ loading ? 'Opening email app...' : 'Send Message' }}
           </button>
+
+          <p
+            v-if="success"
+            class="flex items-center gap-2 text-xs text-emerald-600"
+          >
+            {{ success }}
+          </p>
+          <p
+            v-if="error"
+            class="flex items-center gap-2 text-xs text-rose-600"
+          >
+            {{ error }}
+          </p>
         </form>
       </div>
 
@@ -115,11 +137,62 @@
 </template>
 
 <script setup lang="ts">
+import { reactive, ref } from 'vue'
 import {
   PhoneIcon,
   PhoneArrowDownLeftIcon,
   GlobeAltIcon,
   EnvelopeIcon,
 } from '@heroicons/vue/24/outline'
+
+const CONTACT_EMAIL =
+  import.meta.env.VITE_REQUEST_EMAIL || 'cwsi.billing@abejoph.com'
+
+const form = reactive({
+  name: '',
+  email: '',
+  contactNumber: '',
+  message: '',
+})
+
+const loading = ref(false)
+const success = ref<string | null>(null)
+const error = ref<string | null>(null)
+
+async function handleSubmit() {
+  loading.value = true
+  success.value = null
+  error.value = null
+
+  try {
+    const subject = 'Contact Inquiry from CWSI Website'
+    const bodyLines = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Contact Number: ${form.contactNumber || '(not provided)'}`,
+      '',
+      'Message:',
+      form.message,
+    ]
+
+    const body = bodyLines.join('\n')
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      CONTACT_EMAIL,
+    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
+    window.open(gmailUrl, '_blank')
+
+    success.value =
+      'Gmail has been opened in a new tab. Please review and send your message to complete the contact request.'
+  } catch (err: any) {
+    error.value =
+      'Failed to open your email client. Please try again or email us directly at ' +
+      CONTACT_EMAIL +
+      '.'
+  } finally {
+    loading.value = false
+  }
+}
 </script>
 
